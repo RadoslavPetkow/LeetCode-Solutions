@@ -1,0 +1,17 @@
+class Solution(object):
+    def putMarbles(self, weights, k):
+        """
+        :type weights: List[int]
+        :type k: int
+        :rtype: int
+        """
+        n = len(weights)
+        if k == 1:
+            return 0
+        pairSum = [weights[i] + weights[i+1] for i in range(n - 1)]
+        pairSum.sort()
+        min_extra = sum(pairSum[:k-1])
+        max_extra = sum(pairSum[-(k-1):])
+        
+
+        return max_extra - min_extra
